@@ -3,7 +3,8 @@
 auto lo
 iface lo inet loopback
 
-auto eth0
+auto eth0 {% if host.private_ip %}eth0:0{% endif %}
+
 iface eth0 inet static
     address {{ host.public_ip }}/24
 {% if gateway_ip is defined %}

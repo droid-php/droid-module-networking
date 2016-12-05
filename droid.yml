@@ -21,4 +21,4 @@ triggers:
       command: "shell:exec"
       sudo: true
       arguments:
-          command-line: "ifdown eth0 && ifup eth0"
+          command-line: "ifdown eth0 ; ifup eth0 ; ifdown eth0:0 ; ifup eth0:0"

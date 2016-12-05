@@ -13,10 +13,12 @@ tasks:
     arguments:
         src: "@{{ mod_path }}/assets/interfaces.twig"
         dest: "/etc/network/interfaces"
-  -
-    name: "Generate /etc/resolv.conf"
-    command: "fs:copy"
-    sudo: true
-    arguments:
-        src: "@{{ mod_path }}/assets/resolv.conf.twig"
-        dest: "/etc/resolv.conf"
+    trigger: "Restart networking"
+
+triggers:
+    -
+      name: "Restart networking"
+      command: "shell:exec"
+      sudo: true
+      arguments:
+          command-line: "ifdown eth0; ifup eth0"

@@ -1,7 +1,6 @@
 description: "Configure networking"
 
 variables: 
-  use_legacy_templating: false
   mod_networking_dnsservers:
     - 8.8.8.8
     - 8.8.4.4

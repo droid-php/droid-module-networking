@@ -1,0 +1,22 @@
+description: "Configure networking"
+
+variables: 
+  mod_networking_dnsservers:
+    - 8.8.8.8
+    - 8.8.4.4
+
+tasks:
+  -
+    name: "Generate /etc/network/interfaces"
+    command: "fs:copy"
+    sudo: true
+    arguments:
+        src: "@{{ mod_path }}/assets/interfaces.twig"
+        dest: "/etc/network/interfaces"
+  -
+    name: "Generate /etc/resolv.conf"
+    command: "fs:copy"
+    sudo: true
+    arguments:
+        src: "@{{ mod_path }}/assets/resolv.conf.twig"
+        dest: "/etc/resolv.conf"
